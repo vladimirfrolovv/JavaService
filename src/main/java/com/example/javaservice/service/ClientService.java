@@ -1,14 +1,10 @@
 package com.example.javaservice.service;
 
-import com.example.javaservice.model.dto.ClientDto;
-import com.example.javaservice.model.entity.ClientEntity;
+import com.example.javaservice.model.entity.Client;
 
 public interface ClientService {
-    void createClient( ClientEntity clientEntity);
+    void createClient( Client client );
     void authenticationClient(String login, String password);
-   //TODO Как приннимается картинка, мб как url
-    void uploadImage();
-    void getImagesInformation();
 
 
 }

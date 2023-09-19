@@ -5,11 +5,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import lombok.Getter;
-import org.springframework.data.relational.core.sql.In;
 
 @Getter
 @Entity
-public class ClientEntity {
+public class Client {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     Long id;
@@ -18,9 +17,9 @@ public class ClientEntity {
     String password;
     Boolean registered = false;
 
-    public ClientEntity ( ) {}
+    public Client ( ) {}
 
-    public ClientEntity ( String login, String email, String password ) {
+    public Client ( String login, String email, String password ) {
         this.login = login;
         this.email = email;
         this.password = password;
@@ -28,7 +27,7 @@ public class ClientEntity {
 
     @Override
     public String toString ( ) {
-        return "ClientEntity{" +
+        return "Client{" +
                 "login='" + login + '\'' +
                 ", email='" + email + '\'' +
                 ", password='" + password + '\'' +
