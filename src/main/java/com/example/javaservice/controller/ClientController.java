@@ -14,12 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class ClientController {
     private final ClientService clientService;
+
     @PostMapping(value = "/clients")
-    public void createNewClient( @RequestBody ClientDto clientDto ) {
+    public void createNewClient ( @RequestBody ClientDto clientDto ) {
 
     }
+
     @PostMapping
-    public void authenticationClient ( String email, String password){
+    public void authenticationClient ( String email, String password ) {
     }
 
 }

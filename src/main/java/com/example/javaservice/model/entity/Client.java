@@ -10,14 +10,15 @@ import lombok.Getter;
 @Entity
 public class Client {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     String login;
     String email;
     String password;
     Boolean registered = false;
 
-    public Client ( ) {}
+    public Client ( ) {
+    }
 
     public Client ( String login, String email, String password ) {
         this.login = login;
