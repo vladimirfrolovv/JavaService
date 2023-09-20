@@ -1,54 +1,23 @@
 package com.example.javaservice.model.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import lombok.Getter;
+import jakarta.persistence.*;
+import lombok.Data;
 
-@Getter
 @Entity
+@Table(name = "clients")
+@Data
 public class Client {
     @Id
+//    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
+//    @Column(name = "login")
     String login;
+//    @Column(name = "email", nullable = false, unique = true)
     String email;
+//    @Column(name = "password", nullable = false)
     String password;
+//    @Column(name = "registered")
     Boolean registered = false;
-
-    public Client ( ) {
-    }
-
-    public Client ( String login, String email, String password ) {
-        this.login = login;
-        this.email = email;
-        this.password = password;
-    }
-
-    @Override
-    public String toString ( ) {
-        return "Client{" +
-                "login='" + login + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
-    }
-
-    public void setLogin ( String login ) {
-        this.login = login;
-    }
-
-    public void setEmail ( String email ) {
-        this.email = email;
-    }
-
-    public void setPassword ( String password ) {
-        this.password = password;
-    }
-
-    public void setRegistered ( Boolean registered ) {
-        this.registered = registered;
-    }
 
 }
