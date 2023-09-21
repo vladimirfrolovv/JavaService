@@ -1,8 +1,10 @@
 CREATE TABLE clients
 (
     id SERIAL,
-    login TEXT,
-    email TEXT,
-    password TEXT,
+    login VARCHAR,
+    email VARCHAR,
+    password VARCHAR,
     registered BOOLEAN
-)
+);
+INSERT INTO clients (login, email, password, registered)  VALUES ('vovan', 'email', 'qwerty', false);
+
