@@ -14,17 +14,16 @@ import java.awt.*;
 @RequiredArgsConstructor
 public class ClientController {
     private final ClientService clientService;
-    private final ClientMapper clientMapper;
+//    private final ClientMapper clientMapper;
     @PostMapping(value = "/clients")
     public void createNewClient ( @RequestBody ClientDto clientDto ) {
-        Client client = clientMapper.toEntity(clientDto);
-        clientService.createClient(client);
+        clientService.createClient(ClientMapper.INSTANCE.toEntity(clientDto));
 
     }
     @GetMapping(value = "/{id}")
     public ClientDto getClientById( @PathVariable(name = "id") Long id ) {
         Client client = clientService.getClientById(id);
-        return clientMapper.toDTO(client);
+        return ClientMapper.INSTANCE.toDTO(client);
     }
 //    @PostMapping
 //    public void authenticationClient ( String email, String password ) {

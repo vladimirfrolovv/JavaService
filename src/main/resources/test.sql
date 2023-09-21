@@ -8,3 +8,4 @@ CREATE TABLE clients
 );
 INSERT INTO clients (login, email, password, registered)  VALUES ('vovan', 'email', 'qwerty', false);
 
+
