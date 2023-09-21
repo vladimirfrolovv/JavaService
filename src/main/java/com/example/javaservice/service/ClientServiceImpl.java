@@ -6,6 +6,8 @@ import lombok.RequiredArgsConstructor;
 
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 @RequiredArgsConstructor
 public class ClientServiceImpl implements ClientService {
@@ -25,5 +27,17 @@ public class ClientServiceImpl implements ClientService {
     @Override
     public Client getClientById (Long id) {
         return clientRepository.getReferenceById(id);
+    }
+    @Override
+    public List<Client> getAllClient() {
+        return clientRepository.findAll();
+    }
+    @Override
+    public boolean deleteClientById(Long id) {
+        if (clientRepository.existsById(id)) {
+            clientRepository.delete(clientRepository.getReferenceById(id));
+            return true;
+        }
+        return false;
     }
 }

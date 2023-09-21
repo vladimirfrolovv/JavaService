@@ -9,12 +9,12 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.awt.*;
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
 public class ClientController {
     private final ClientService clientService;
-//    private final ClientMapper clientMapper;
     @PostMapping(value = "/clients")
     public void createNewClient ( @RequestBody ClientDto clientDto ) {
         clientService.createClient(ClientMapper.INSTANCE.toEntity(clientDto));
@@ -25,7 +25,12 @@ public class ClientController {
         Client client = clientService.getClientById(id);
         return ClientMapper.INSTANCE.toDTO(client);
     }
-//    @PostMapping
-//    public void authenticationClient ( String email, String password ) {
-//    }
+    @GetMapping(value = "/clients")
+    public List<ClientDto> getAllClients() {
+        return ClientMapper.INSTANCE.toListDto(clientService.getAllClient());
+    }
+    @DeleteMapping(value = "/{id}")
+    public void deleteClientById ( @PathVariable(name = "id") Long id ) {
+        clientService.deleteClientById(id);
+    }
 }
