@@ -11,5 +11,6 @@ public interface ClientService {
     Client getClientById (Long id);
     List<Client> getAllClient();
     boolean deleteClientById(Long id);
+    boolean changeClientData(Client client, Long id);
 
 }
