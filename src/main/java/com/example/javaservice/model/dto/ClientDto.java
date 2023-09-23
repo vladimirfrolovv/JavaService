@@ -8,5 +8,5 @@ public class ClientDto {
     String login;
     String email;
     String password;
-    Boolean registered;
+//    Boolean authorized;
 }

@@ -31,6 +31,7 @@ dependencies {
 	implementation("org.mapstruct:mapstruct:1.5.5.Final")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
 	implementation ("org.springframework.security:spring-security-web")
+	implementation("com.auth0:java-jwt:2.0.1")
 	implementation("org.springframework.boot:spring-boot-starter-security:3.1.4")
 	implementation ("org.springframework.security:spring-security-config")
 	compileOnly("org.projectlombok:lombok")

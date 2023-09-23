@@ -3,9 +3,7 @@ package com.example.javaservice.service;
 import com.example.javaservice.model.entity.Client;
 import com.example.javaservice.repisotory.ClientRepository;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
-import org.springframework.context.annotation.Bean;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +23,6 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void authenticationClient ( String login, String password ) {
-
     }
     @Override
     public Client getClientById (Long id) {
@@ -47,6 +44,7 @@ public class ClientServiceImpl implements ClientService {
     public boolean changeClientData(Client client, Long id) {
         if (clientRepository.existsById(id)) {
             client.setId(id);
+            client.setPassword(passwordEncoder.encode(client.getPassword()));
             clientRepository.save(client);
             return true;
         }
