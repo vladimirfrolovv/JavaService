@@ -29,10 +29,12 @@ public class SecurityConfiguration {
                 .authorizeHttpRequests(authCustomizer -> authCustomizer
                         .requestMatchers(new AntPathRequestMatcher("/api/auth/*"))
                         .permitAll())
-                .addFilterAfter(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
-//                .authorizeHttpRequests(authCustomizer -> authCustomizer
-//                        .requestMatchers(new AntPathRequestMatcher("/api/clients"))
-//                        .permitAll());
+                .addFilterAfter(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
+                .authorizeHttpRequests(authCustomizer -> authCustomizer
+                        .requestMatchers(new AntPathRequestMatcher("/api/clients"),new AntPathRequestMatcher("/api/clients/*") )
+
+
+                        .permitAll());
               return   http.build();
     }
     @Bean
