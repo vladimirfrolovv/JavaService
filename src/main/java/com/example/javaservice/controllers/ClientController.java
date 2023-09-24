@@ -1,9 +1,9 @@
-package com.example.javaservice.controller;
+package com.example.javaservice.controllers;
 
 import com.example.javaservice.model.dto.ClientDto;
 import com.example.javaservice.model.entity.Client;
 import com.example.javaservice.model.mapper.ClientMapper;
-import com.example.javaservice.service.ClientService;
+import com.example.javaservice.services.ClientService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;

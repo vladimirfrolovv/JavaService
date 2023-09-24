@@ -1,23 +1,23 @@
-//package com.example.javaservice.model.entity;
-//
-//import jakarta.persistence.*;
-//import lombok.Data;
-//import lombok.Getter;
-//import org.springframework.data.annotation.Id;
-//
-//@Entity
-//@Table(name = "roles")
-//@Data
-//public class Role {
-//    @Getter
-//    @jakarta.persistence.Id
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    private Long id;
-//    private String name;
-//
-//    public void setId ( Long id ) {
-//        this.id = id;
-//    }
-//
-//}
+package com.example.javaservice.model.entity;
+
+import jakarta.persistence.*;
+import lombok.Data;
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+import org.springframework.data.annotation.Id;
+import org.springframework.security.core.GrantedAuthority;
+
+@RequiredArgsConstructor
+public enum Role implements GrantedAuthority {
+
+    ADMIN("ADMIN"),
+    USER("USER");
+
+    private final String value;
+
+    @Override
+    public String getAuthority() {
+        return value;
+    }
+
+}

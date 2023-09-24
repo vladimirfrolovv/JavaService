@@ -1,4 +1,4 @@
-package com.example.javaservice.service;
+package com.example.javaservice.services;
 
 import com.example.javaservice.model.entity.Client;
 import com.example.javaservice.repisotory.ClientRepository;
@@ -8,12 +8,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class ClientServiceImpl implements ClientService {
     private final ClientRepository clientRepository;
-
     private PasswordEncoder passwordEncoder;
     @Override
     public void createClient ( Client client ) {
@@ -23,6 +23,16 @@ public class ClientServiceImpl implements ClientService {
 
     @Override
     public void authenticationClient ( String login, String password ) {
+//        try {
+//            Authentication authentication = authenticationManager.authenticate(
+//                    new UsernamePasswordAuthenticationToken(login, password)
+//            );
+//            // Аутентификация     успешна
+//            // Вы можете добавить дополнительную логику здесь
+//        } catch (AuthenticationException e) {
+//            // Аутентификация не удалась
+//            // Обработка ошибки
+//        }
     }
     @Override
     public Client getClientById (Long id) {
@@ -49,6 +59,27 @@ public class ClientServiceImpl implements ClientService {
             return true;
         }
         return false;
+    }
+    @Override
+    public Optional<Client> getClientByEmail( String email) {
+        return clientRepository.findClientByEmail(email);
+    }
+    @Override
+    public void changeOrAddRefreshToken(Client client,Long id, String refreshToken) {
+        if (clientRepository.existsById(id)) {
+            client.setId(id);
+            client.setRefreshToken(refreshToken);
+            clientRepository.save(client);
+        }
+    }
+    @Override
+    public String getRefreshToken(String email) {
+        Optional<Client> client = clientRepository.findClientByEmail(email);
+        return client.map(Client::getRefreshToken).orElse(null);
+    }
+    @Override
+    public boolean checkPass(String password, String passwordEncode) {
+        return  passwordEncoder.matches(password, passwordEncode);
     }
 
 }
