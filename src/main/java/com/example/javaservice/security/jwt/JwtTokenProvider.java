@@ -41,7 +41,7 @@ public class JwtTokenProvider {
                 .setSubject(client.getEmail())
                 .setExpiration(accessExpiration)
                 .signWith(jwtAccessSecret)
-                .claim("login", client.getLogin())
+                .claim("email", client.getEmail())
                 .compact();
     }
 
@@ -50,7 +50,7 @@ public class JwtTokenProvider {
         final Instant refreshExpirationInstant = now.plusDays(30).atZone(ZoneId.systemDefault()).toInstant();
         final Date refreshExpiration = Date.from(refreshExpirationInstant);
         return Jwts.builder()
-                .setSubject(client.getLogin())
+                .setSubject(client.getEmail())
                 .setExpiration(refreshExpiration)
                 .signWith(jwtRefreshSecret)
                 .compact();

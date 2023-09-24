@@ -21,7 +21,7 @@ public class JwtAuthentication implements Authentication {
     public Object getDetails() { return null; }
 
     @Override
-    public Object getPrincipal() { return login; }
+    public Object getPrincipal() { return email; }
 
     @Override
     public boolean isAuthenticated() { return authenticated; }
@@ -35,6 +35,6 @@ public class JwtAuthentication implements Authentication {
     public String getName() { return null; }
 
     private boolean authenticated;
-    private String login;
+    private String email;
 
 }

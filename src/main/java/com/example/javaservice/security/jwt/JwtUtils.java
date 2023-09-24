@@ -9,7 +9,7 @@ public final class JwtUtils {
 
     public static JwtAuthentication generate ( Claims claims ) {
         final JwtAuthentication jwtInfoToken = new JwtAuthentication();
-        jwtInfoToken.setLogin(claims.getSubject());
+        jwtInfoToken.setEmail(claims.getSubject());
         return jwtInfoToken;
     }
 }

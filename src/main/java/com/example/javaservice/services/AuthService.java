@@ -61,9 +61,6 @@ public class AuthService {
         }
         throw new AuthException("Невалидный JWT токен");
     }
-    public boolean checkPassword(String pass, String passEncode) {
-       return clientService.checkPass(pass, passEncode);
-    }
 //    public JwtAuthentication getAuthInfo() {
 //        return (JwtAuthentication) SecurityContextHolder.getContext().getAuthentication();
 //    }
