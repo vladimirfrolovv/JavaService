@@ -30,11 +30,6 @@ dependencies {
 	implementation("org.springframework.modulith:spring-modulith-starter-jpa")
 	implementation("org.mapstruct:mapstruct:1.5.5.Final")
 	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.2.0")
-	implementation ("org.springframework.security:spring-security-web")
-	implementation("org.springframework.boot:spring-boot-starter-security:3.1.4")
-	implementation ("org.springframework.security:spring-security-config")
-	implementation("io.jsonwebtoken:jjwt-api:0.11.2")
-	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.2")
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	developmentOnly("org.springframework.boot:spring-boot-docker-compose")
@@ -46,13 +41,15 @@ dependencies {
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.modulith:spring-modulith-starter-test")
 
+	testImplementation("org.mockito:mockito-core:4.11.0")
+
+
 
 }
 
 dependencyManagement {
 	imports {
 		mavenBom("org.springframework.modulith:spring-modulith-bom:1.0.0")
-		mavenBom( "org.springframework.security:spring-security-bom:6.1.4")
 
 	}
 }
