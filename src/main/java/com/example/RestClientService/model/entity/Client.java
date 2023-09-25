@@ -1,10 +1,7 @@
-package com.example.javaservice.model.entity;
+package com.example.RestClientService.model.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.util.Collection;
-import java.util.Set;
 
 @Entity
 @Table(name = "clients")
@@ -16,5 +13,4 @@ public class Client {
     String login;
     String email;
     String password;
-    String refreshToken;
 }

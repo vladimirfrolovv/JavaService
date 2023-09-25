@@ -1,4 +1,4 @@
-package com.example.javaservice.model.dto;
+package com.example.RestClientService.model.dto;
 
 import lombok.*;
 

@@ -1,7 +1,7 @@
-package com.example.javaservice.model.mapper;
+package com.example.RestClientService.model.mapper;
 
-import com.example.javaservice.model.dto.ClientDto;
-import com.example.javaservice.model.entity.Client;
+import com.example.RestClientService.model.dto.ClientDto;
+import com.example.RestClientService.model.entity.Client;
 import org.mapstruct.Mapper;
 import org.mapstruct.factory.Mappers;
 
