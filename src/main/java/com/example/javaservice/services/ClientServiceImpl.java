@@ -15,6 +15,7 @@ import java.util.Optional;
 public class ClientServiceImpl implements ClientService {
     private final ClientRepository clientRepository;
     private PasswordEncoder passwordEncoder;
+
     @Override
     public void createClient ( Client client ) {
         client.setPassword(passwordEncoder.encode(client.getPassword()));
@@ -22,36 +23,26 @@ public class ClientServiceImpl implements ClientService {
     }
 
     @Override
-    public void authenticationClient ( String login, String password ) {
-//        try {
-//            Authentication authentication = authenticationManager.authenticate(
-//                    new UsernamePasswordAuthenticationToken(login, password)
-//            );
-//            // Аутентификация     успешна
-//            // Вы можете добавить дополнительную логику здесь
-//        } catch (AuthenticationException e) {
-//            // Аутентификация не удалась
-//            // Обработка ошибки
-//        }
-    }
-    @Override
-    public Client getClientById (Long id) {
+    public Client getClientById ( Long id ) {
         return clientRepository.getReferenceById(id);
     }
+
     @Override
-    public List<Client> getAllClient() {
+    public List<Client> getAllClient ( ) {
         return clientRepository.findAll();
     }
+
     @Override
-    public boolean deleteClientById(Long id) {
+    public boolean deleteClientById ( Long id ) {
         if (clientRepository.existsById(id)) {
             clientRepository.delete(clientRepository.getReferenceById(id));
             return true;
         }
         return false;
     }
+
     @Override
-    public boolean changeClientData(Client client, Long id) {
+    public boolean changeClientData ( Client client, Long id ) {
         if (clientRepository.existsById(id)) {
             client.setId(id);
             client.setPassword(passwordEncoder.encode(client.getPassword()));
@@ -60,26 +51,30 @@ public class ClientServiceImpl implements ClientService {
         }
         return false;
     }
+
     @Override
-    public Optional<Client> getClientByEmail( String email) {
+    public Optional<Client> getClientByEmail ( String email ) {
         return clientRepository.findClientByEmail(email);
     }
+
     @Override
-    public void changeOrAddRefreshToken(Client client,Long id, String refreshToken) {
+    public void changeOrAddRefreshToken ( Client client, Long id, String refreshToken ) {
         if (clientRepository.existsById(id)) {
             client.setId(id);
             client.setRefreshToken(refreshToken);
             clientRepository.save(client);
         }
     }
+
     @Override
-    public String getRefreshToken(String email) {
+    public String getRefreshToken ( String email ) {
         Optional<Client> client = clientRepository.findClientByEmail(email);
         return client.map(Client::getRefreshToken).orElse(null);
     }
+
     @Override
-    public boolean checkPass(String password, String passwordEncode) {
-        return  passwordEncoder.matches(password, passwordEncode);
+    public boolean checkPass ( String password, String passwordEncode ) {
+        return passwordEncoder.matches(password, passwordEncode);
     }
 
 }

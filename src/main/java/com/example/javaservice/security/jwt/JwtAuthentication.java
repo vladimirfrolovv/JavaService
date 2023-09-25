@@ -11,30 +11,43 @@ import java.util.Collection;
 @Getter
 @Setter
 public class JwtAuthentication implements Authentication {
+
+    private boolean authenticated;
+    private String email;
     @Override
-    public Collection<? extends GrantedAuthority> getAuthorities() { return null; }
+    public Collection<? extends GrantedAuthority> getAuthorities ( ) {
+        return null;
+    }
 
     @Override
-    public Object getCredentials() { return null; }
+    public Object getCredentials ( ) {
+        return null;
+    }
 
     @Override
-    public Object getDetails() { return null; }
+    public Object getDetails ( ) {
+        return null;
+    }
 
     @Override
-    public Object getPrincipal() { return email; }
+    public Object getPrincipal ( ) {
+        return email;
+    }
 
     @Override
-    public boolean isAuthenticated() { return authenticated; }
+    public boolean isAuthenticated ( ) {
+        return authenticated;
+    }
 
     @Override
-    public void setAuthenticated(boolean isAuthenticated) throws IllegalArgumentException {
+    public void setAuthenticated ( boolean isAuthenticated ) throws IllegalArgumentException {
         this.authenticated = isAuthenticated;
     }
 
     @Override
-    public String getName() { return null; }
+    public String getName ( ) {
+        return null;
+    }
 
-    private boolean authenticated;
-    private String email;
 
 }

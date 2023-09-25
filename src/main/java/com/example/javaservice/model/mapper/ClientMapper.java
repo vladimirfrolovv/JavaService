@@ -10,8 +10,11 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface ClientMapper {
     ClientMapper INSTANCE = Mappers.getMapper(ClientMapper.class);
-    ClientDto toDTO( Client entity);
-    Client toEntity(ClientDto dto);
-    List<ClientDto> toListDto(List<Client> clients);
+
+    ClientDto toDTO ( Client entity );
+
+    Client toEntity ( ClientDto dto );
+
+    List<ClientDto> toListDto ( List<Client> clients );
 
 }

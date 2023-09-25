@@ -1,6 +1,7 @@
 package com.example.javaservice.model.dto;
 
 import lombok.*;
+
 @Getter
 @Setter
 public class ClientDto {
@@ -8,5 +9,4 @@ public class ClientDto {
     String login;
     String email;
     String password;
-//    Boolean authorized;
 }
