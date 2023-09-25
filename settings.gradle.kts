@@ -1,1 +1,1 @@
-rootProject.name = "JavaService"
+rootProject.name = "RestClientService"
