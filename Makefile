@@ -10,4 +10,4 @@ stop:
 	docker compose down
 	./gradlew clean
 	docker volume prune -f
-	docker system prune
+	docker system prune -a

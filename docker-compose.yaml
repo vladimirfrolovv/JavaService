@@ -1,5 +1,17 @@
 version: '3.9'
 services:
+  db_auth:
+    container_name: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+    image: postgres:latest
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - my-network
   app:
     container_name: rest
     build: .
@@ -15,19 +27,7 @@ services:
       - db_auth
     networks:
       - my-network
-  db_auth:
-    container_name: postgres
-    restart: on-failure
-    ports:
-      - "5432:5432"
-    environment:
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_USER=postgres
-    image: postgres:latest
-    volumes:
-      - pg_data:/var/lib/postgresql/data
-    networks:
-      - my-network
+
 
 
 networks:

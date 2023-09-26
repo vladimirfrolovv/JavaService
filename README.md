@@ -2,9 +2,10 @@
 <h1 align="left">RestClientService</h1>
 </div>
 
-## Description
+## Description:
 
 Проект включает в себе Rest Api сервис, и базу  данных PostgreSQL. В качестве сборщика используется gradle. Проект можно склонировать и запустить в docker контейнере. Для отправки запросов использовался swagger. 
+
 
 ## Technologies:
 * [Java 17](https://www.java.com/en/)
