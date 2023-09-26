@@ -1,10 +1,38 @@
-version: '3.5'
+version: '3.9'
 services:
+  app:
+    container_name: rest
+    build: .
+    expose:
+      - 8080
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db_auth:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+    depends_on:
+      - db_auth
+    networks:
+      - my-network
   db_auth:
-    container_name: name
+    container_name: postgres
+    restart: on-failure
     ports:
       - "5432:5432"
     environment:
       - POSTGRES_PASSWORD=postgres
       - POSTGRES_USER=postgres
-    image: postgres:14-alpine3.17
+    image: postgres:latest
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    networks:
+      - my-network
+
+
+networks:
+  my-network:
+    driver: bridge
+
+volumes:
+  pg_data:

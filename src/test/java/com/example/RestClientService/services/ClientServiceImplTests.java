@@ -19,7 +19,7 @@ public class ClientServiceImplTests {
     private ClientRepository clientRepository;
 
     @BeforeEach
-    public void setUp() {
+    public void setUp ( ) {
         clientRepository = mock(ClientRepository.class);
         clientService = new ClientServiceImpl(clientRepository);
         when(clientRepository.findById(1L)).thenReturn(Optional.of(new Client(1L, "vova", "vl@mail.ru", "1234")));
@@ -33,19 +33,18 @@ public class ClientServiceImplTests {
     }
 
     @Test
-    public void testGetClientById() {
+    public void testGetClientById ( ) {
         Optional<Client> client = clientService.getClientById(1L);
         Assertions.assertEquals(1L, client.get().getId());
         Assertions.assertEquals("vova", client.get().getLogin());
         Assertions.assertEquals("vl@mail.ru", client.get().getEmail());
         Assertions.assertEquals("1234", client.get().getPassword());
-
         Optional<Client> nonExistentClient = clientService.getClientById(2L);
         Assertions.assertEquals(Optional.empty(), nonExistentClient);
     }
 
     @Test
-    public void testGetAllClient() {
+    public void testGetAllClient ( ) {
         List<Client> clients = clientService.getAllClient();
         Assertions.assertEquals(2, clients.size());
         Assertions.assertEquals("vova", clients.get(0).getLogin());
@@ -54,30 +53,27 @@ public class ClientServiceImplTests {
     }
 
     @Test
-    public void testDeleteClientById() {
+    public void testDeleteClientById ( ) {
         boolean deleted = clientService.deleteClientById(1L);
         Assertions.assertTrue(deleted);
-
         boolean notDeleted = clientService.deleteClientById(2L);
         Assertions.assertFalse(notDeleted);
     }
 
     @Test
-    public void testChangeClientData() {
+    public void testChangeClientData ( ) {
         Client updatedClient = new Client(1L, "newVova", "new_vl@mail.ru", "new1234");
         boolean updated = clientService.changeClientData(updatedClient, 1L);
-        Assertions.assertTrue( updated);
-
+        Assertions.assertTrue(updated);
         boolean notUpdated = clientService.changeClientData(updatedClient, 2L);
         Assertions.assertFalse(notUpdated);
     }
 
     @Test
-    public void testGetClientByEmail() {
+    public void testGetClientByEmail ( ) {
         Optional<Client> client = clientService.getClientByEmail("vl@mail.ru");
         Assertions.assertEquals(1L, client.get().getId());
         Assertions.assertEquals("vova", client.get().getLogin());
-
         Optional<Client> nonExistentClient = clientService.getClientByEmail("nonexistent@email.com");
         Assertions.assertEquals(Optional.empty(), nonExistentClient);
     }

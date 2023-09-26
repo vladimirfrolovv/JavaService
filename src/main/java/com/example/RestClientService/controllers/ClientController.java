@@ -24,10 +24,10 @@ public class ClientController {
     @PostMapping
     public void createNewClient ( @RequestBody ClientDto clientDto ) {
         clientService.createClient(ClientMapper.INSTANCE.toEntity(clientDto));
-
     }
-    @GetMapping(value = "{clientId}")
-    public ResponseEntity<ClientDto> getClientById ( @PathVariable(name = "clientId") Long id ) {
+
+    @GetMapping(value = "{id}")
+    public ResponseEntity<ClientDto> getClientById ( @PathVariable(name = "id") Long id ) {
         Optional<Client> client = clientService.getClientById(id);
         if (client.isEmpty()) {
             log.error("Client not Found");
@@ -59,8 +59,9 @@ public class ClientController {
             log.error("Client not found");
         }
     }
-    @GetMapping(value= "{clientEmail}")
-    public ResponseEntity<ClientDto> getClientByEmail( @PathVariable(name = "clientEmail") String email ) {
+
+    @GetMapping(value = "email/{email}")
+    public ResponseEntity<ClientDto> getClientByEmail ( @PathVariable(name = "email") String email ) {
         Optional<Client> client = clientService.getClientByEmail(email);
         if (client.isEmpty()) {
             log.error("Client not Found");

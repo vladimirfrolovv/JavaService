@@ -2,6 +2,7 @@ package com.example.RestClientService.services;
 
 import com.example.RestClientService.model.entity.Client;
 import com.example.RestClientService.repisotory.ClientRepository;
+import io.swagger.v3.oas.annotations.Hidden;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,6 +11,7 @@ import java.util.Optional;
 
 @Service
 @AllArgsConstructor
+@Hidden
 public class ClientServiceImpl implements ClientService {
     private final ClientRepository clientRepository;
 
@@ -17,6 +19,7 @@ public class ClientServiceImpl implements ClientService {
     public void createClient ( Client client ) {
         clientRepository.save(client);
     }
+
     @Override
     public Optional<Client> getClientById ( Long id ) {
         return clientRepository.findById(id);

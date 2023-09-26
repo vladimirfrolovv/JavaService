@@ -33,15 +33,15 @@ dependencies {
 	compileOnly("org.projectlombok:lombok")
 	developmentOnly("org.springframework.boot:spring-boot-devtools")
 	developmentOnly("org.springframework.boot:spring-boot-docker-compose")
-	runtimeOnly("io.jsonwebtoken:jjwt-jackson:0.11.2")
 	runtimeOnly("org.postgresql:postgresql")
 	annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 	annotationProcessor("org.projectlombok:lombok")
 	annotationProcessor("org.mapstruct:mapstruct-processor:1.5.5.Final")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.modulith:spring-modulith-starter-test")
-
 	testImplementation("org.mockito:mockito-core:4.11.0")
+	implementation("org.springframework.boot:spring-boot-gradle-plugin:3.1.3")
+
 
 
 
@@ -51,6 +51,20 @@ dependencyManagement {
 	imports {
 		mavenBom("org.springframework.modulith:spring-modulith-bom:1.0.0")
 
+	}
+}
+tasks.register("distClean") {
+	dependsOn("clean")
+	doLast {
+		delete("bin")
+		delete (".classpath")
+		delete (".gradle")
+		delete (".nb-gradle")
+		delete (".project")
+		delete (".settings")
+		delete (".vscode")
+		delete (".DS_Store")
+		delete (".idea")
 	}
 }
 
