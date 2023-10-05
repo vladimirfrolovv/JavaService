@@ -1,4 +1,4 @@
-package com.example.RestClientService.repisotory;
+package com.example.RestClientService.repository;
 
 import com.example.RestClientService.model.entity.Client;
 import io.swagger.v3.oas.annotations.Hidden;

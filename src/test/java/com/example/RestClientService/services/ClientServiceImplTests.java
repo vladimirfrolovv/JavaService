@@ -1,7 +1,7 @@
 package com.example.RestClientService.services;
 
 import com.example.RestClientService.model.entity.Client;
-import com.example.RestClientService.repisotory.ClientRepository;
+import com.example.RestClientService.repository.ClientRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
